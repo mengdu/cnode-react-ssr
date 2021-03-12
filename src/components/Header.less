@@ -1,0 +1,46 @@
+.header {
+  padding: 15px;
+
+  .site {
+    display: inline-block;
+
+    .logo {
+      width: 80px;
+      vertical-align: middle;
+    }
+  
+    .name {
+      font-size: 1rem;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      margin-left: 5px;
+      vertical-align: -5px;
+      color: #333;
+    }
+  }
+
+  .nav {
+    margin: 0;
+    padding: 0;
+    margin-left: 15px;
+    list-style: none;
+    display: inline-block;
+    vertical-align: -5px;
+    font-size: 13px;
+    font-weight: 600;
+
+    &-item {
+      display: inline-block;
+
+      a {
+        padding: 0 10px;
+        color: inherit;
+      }
+    }
+
+    &-item + .nav-item {
+      margin-left: 10px;
+    }
+  }
+}

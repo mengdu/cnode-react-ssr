@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
 import router from './router'
 import { SSRConsumer } from './context'
-import './App.css'
+import Header from './components/Header'
+import './App.less'
 
 export function App(props) {
   return (
@@ -9,19 +9,12 @@ export function App(props) {
       <SSRConsumer>
         {(ctx) => {
           return (
-            <>
-              <h1 className="text-center">React SSR base on Vite</h1>
-              <nav className="main-nav">
-                <ul>
-                  <li><Link to="/">Home</Link></li>
-                  <li><Link to="/user/1234?with=1">User</Link></li>
-                  <li><Link to="/blog">Blog</Link></li>
-                  <li><Link to="/demo">Demo</Link></li>
-                  <li><Link to="/about">About</Link></li>
-                </ul>
-              </nav>
-              {router.view({ ssr: ctx })}
-            </>
+            <div className="container">
+              <Header />
+              <main className="page-entry">
+                {router.view({ ssr: ctx })}
+              </main>
+            </div>
           )
         }}
       </SSRConsumer>
