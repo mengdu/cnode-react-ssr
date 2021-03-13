@@ -75,8 +75,15 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
                 return res.redirect(302, redirect)
             }
 
+            const tags = {
+                '<': '&lt;',
+                '>': '&gt;'
+            }
+            const ssrDataText = JSON.stringify(propsData)
+                .replace(/(<|>)/g, v => tags[v])
+
             const html = template
-                .replace('<!--init-props-->', `<script id="ssr-data" type="text/json">${JSON.stringify(propsData)}</script>`)
+                .replace('<!--init-props-->', `<script id="ssr-data" type="text/json">${ssrDataText}</script>`)
                 .replace(`<!--app-html-->`, appHtml)
 
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
