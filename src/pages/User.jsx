@@ -1,20 +1,16 @@
 import { sleep } from "../utils"
 
 function User (props) {
-  if (!props.loadDataed) {
-    return 'Loading...'
-  }
-
   return (
     <>
-      <h1>User</h1>
+      <h1>User {+props.loaded}</h1>
       <p>{JSON.stringify(props.user)}</p>
     </>
   )
 }
 
 User.loadData = async function (ctx) {
-  console.log(ctx.isSSR, ctx.url, ctx.query, ctx.params)
+  console.log('loadData:', ctx.isSSR, ctx.url, ctx.query, ctx.params)
 
   await sleep(1000)
 

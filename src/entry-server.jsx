@@ -18,7 +18,10 @@ async function loadData (url, context) {
     const dict = {}
 
     for (const i in arr) {
-        dict[paths[i]] = arr[i]
+        dict[paths[i]] = {
+            url: url,
+            data: arr[i]
+        }
     }
 
     return dict
