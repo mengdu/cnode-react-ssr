@@ -18,8 +18,7 @@ export default function Header(props) {
         <li className="nav-item"><NavLink exact={true} activeClassName="is-active" to="/ask">问答</NavLink></li>
         <li className="nav-item"><NavLink exact={true} activeClassName="is-active" to="/job">招聘</NavLink></li>
         <li className="nav-item"><NavLink exact={true} activeClassName="is-active" to="/about">关于</NavLink></li>
-        <li className="nav-item"><NavLink exact={true} activeClassName="is-active" to="/demo">Demo</NavLink></li>
-        <li className="nav-item"><a href="https://github.com/mengdu/cnode-react-ssr">Source</a></li>
+        <li className="nav-item"><a href="https://github.com/mengdu/cnode-react-ssr">源码</a></li>
       </ul>
     </header>
   )

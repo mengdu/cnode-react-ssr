@@ -61,10 +61,10 @@ function Home (props) {
         </ul>
         <div className="pagination is-background">
           {page > 1 ? (
-            <Link to={'?page=' + (page - 1)}><button className="page-number page-prev"><SvgChevronLeft />&nbsp;{page - 1}</button></Link>
+            <Link to={'?page=' + (page - 1)}><button className="page-number page-prev" title={page - 1}><SvgChevronLeft />&nbsp;Prev</button></Link>
           ) : null}
           <Link to={'?page=' + (page + 1)}>
-          <button className="page-number page-next">{page + 1}&nbsp;<SvgChevronRight /></button>
+          <button className="page-number page-next" title={page + 1}>Next&nbsp;<SvgChevronRight /></button>
           </Link>
         </div>
       </div>

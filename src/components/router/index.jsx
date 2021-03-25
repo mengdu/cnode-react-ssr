@@ -45,7 +45,7 @@ function ssrWrapper (Component) {
     }
 
     useEffect(() => {
-      console.log('useEffect', props.match.path, props.match.url)
+      // console.log('useEffect', props.match.path, props.match.url)
       // 切换路由，如果服务端渲染的不是当前路由时渲染
       if ((!data.ssrCurrent) && Component.loadData) {
         frontendLoadData()

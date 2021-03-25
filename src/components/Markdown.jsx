@@ -8,6 +8,6 @@ export default function Markdown (props) {
   const html = md.render(props.text)
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: html }} className="markdown"></div>
+    <div dangerouslySetInnerHTML={{ __html: html }} className={'markdown' + (props.className ? (' ' + props.className) : '')}></div>
   )
 }

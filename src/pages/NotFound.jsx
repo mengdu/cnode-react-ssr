@@ -1,7 +1,7 @@
-import { func } from "prop-types";
-
-export default function NotFound () {
-    return (
-        <p>404 Not found</p>
-    )
+export default function NotFound() {
+  return (
+    <div className="page-not-found">
+      <p className="text-center" style={{ padding: '30px' }}>404 Not found</p>
+    </div>
+  )
 }

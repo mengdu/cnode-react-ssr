@@ -1,6 +1,7 @@
 import { useWatch } from '../utils/hook'
 import request from '../utils/request'
 import Markdown from '../components/Markdown'
+import Footer from '../components/Footer'
 import './Detail.less'
 import dayjs from 'dayjs'
 
@@ -26,6 +27,35 @@ function Post (props) {
   )
 }
 
+function Comment (props) {
+  const data = props.data
+  if (data.length === 0) return null
+
+  return (
+    <div className="comment-box">
+      <ul className="comment-list">
+        {data.map((e, index) => {
+          return <CommentItem data={e} key={index}/>
+        })}
+      </ul>
+    </div>
+  )
+}
+
+function CommentItem (props) {
+  const data = props.data
+  return (
+    <div className="comment">
+      <div className="head">
+        <img src={data.author.avatar_url} alt="avatar" className="avatar"/>
+        <span className="username">{data.author.loginname}</span>
+        <span className="create-at">{dayjs(data.create_at).format('YYYY-MM-DD HH:mm:ss')}</span>
+      </div>
+      <Markdown text={data.content} className='content'/>
+    </div>
+  )
+}
+
 function Detail (props) {
   const data = props.detail ? props.detail.data : null
 
@@ -38,7 +68,9 @@ function Detail (props) {
   return (
     <div className="page-detail">
       <Post data={data} />
-      <div className="post-comment">{JSON.stringify(data.replies, null, 2)}</div>
+      <Comment data={data.replies}/>
+
+      <Footer />
     </div>
   )
 }
