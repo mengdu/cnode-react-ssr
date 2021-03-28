@@ -11,21 +11,22 @@ import { queryStringToObject } from '../utils'
 function TopicItem (props) {
   const data = props.data
   return (
-    <div className="topic-item">
+    <div className="topic">
       <div className="voters">
         <span><SvgCaretUp className="upvoter"/></span>
         <span className="score">{data.visit_count}</span>
       </div>
-      <div className="details">
-        {/* <a href={`https://cnodejs.org/topic/${data.id}`} target="_blank" className="url">{data.title}</a> */}
-        <Link to={`/topic/${data.id}`} className="url">{data.title}</Link>
-        <span className="tag" className="tag">{data.tab}</span>
-      </div>
-      <div className="meta">
-        <a href="#"><img src={data.author.avatar_url} alt="avatar" className="avatar" title={data.author.loginname}/></a>
-        &nbsp;via<a href="#" className="nickname">{data.author.loginname}</a>
-        <span className="created-at">{dayjs(data.create_at).format("YYYY-MM-DD HH:mm:ss")}</span>
-        <span className="reply_count">{data.reply_count}</span>&nbsp;评论
+      <div>
+        <div className="details">
+          <Link to={`/topic/${data.id}`} className="url">{data.title}</Link>
+          <span className="tag" className="tag">{data.tab}</span>
+        </div>
+        <div className="meta">
+          <a href="#"><img src={data.author.avatar_url} alt="avatar" className="avatar" title={data.author.loginname}/></a>
+          &nbsp;via<a href="#" className="nickname">{data.author.loginname}</a>
+          <span className="created-at">{dayjs(data.create_at).format("YYYY-MM-DD HH:mm:ss")}</span>
+          <span className="reply_count">{data.reply_count}</span>&nbsp;评论
+        </div>
       </div>
     </div>
   )

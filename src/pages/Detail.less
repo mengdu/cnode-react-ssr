@@ -34,22 +34,42 @@
   }
 
   .comment-box {
-    margin-top: 30px;
+    margin-top: 50px;
+
+    .void {
+      padding: 30px;
+      font-size: 13px;
+      color: #adb4b9;
+      text-align: center;
+    }
+
+    .all-title {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+
+      .comment-count {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
   }
 
   .comment-list {
     margin: 0;
     padding: 0;
+    list-style: none;
+
+    .comment-item {
+      margin-bottom: 15px;
+    }
   }
 
   .comment {
     border: solid 1px #E1E4E8;
     border-radius: 4px;
     overflow: hidden;
-
-    & + .comment {
-      margin-top: 15px;
-    }
 
     .head {
       background-color: #F6F8FA;

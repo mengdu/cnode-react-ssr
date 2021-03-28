@@ -29,13 +29,22 @@ function Post (props) {
 
 function Comment (props) {
   const data = props.data
-  if (data.length === 0) return null
+  if (data.length === 0) return (
+    <div className="comment-box">
+      <p className="void">暂无评论</p>
+    </div>
+  )
 
   return (
     <div className="comment-box">
+      <h2 className="all-title">全部评论 <span className="comment-count">{data.length}</span></h2>
       <ul className="comment-list">
         {data.map((e, index) => {
-          return <CommentItem data={e} key={index}/>
+          return (
+            <li className="comment-item" key={index}>
+              <CommentItem data={e} authorId={props.authorId}/>
+            </li>
+          )
         })}
       </ul>
     </div>
@@ -50,6 +59,9 @@ function CommentItem (props) {
         <img src={data.author.avatar_url} alt="avatar" className="avatar"/>
         <span className="username">{data.author.loginname}</span>
         <span className="create-at">{dayjs(data.create_at).format('YYYY-MM-DD HH:mm:ss')}</span>
+        {props.authorId === data.author.loginname ? (
+          <span className="tag tag--info">作者</span>
+        ) : null}
       </div>
       <Markdown text={data.content} className='content'/>
     </div>
@@ -68,7 +80,7 @@ function Detail (props) {
   return (
     <div className="page-detail">
       <Post data={data} />
-      <Comment data={data.replies}/>
+      <Comment data={data.replies} authorId={data.author.loginname}/>
 
       <Footer />
     </div>
