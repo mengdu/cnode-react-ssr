@@ -2,6 +2,8 @@
 
 Base on `Vite` + `React`.
 
+![](screenshot.png)
+
 ## Start
 
 **dev**
