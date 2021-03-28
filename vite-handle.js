@@ -3,7 +3,10 @@ const path = require('path')
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
 
 function queryStringToObject (query) {
-    return Object.fromEntries(new URLSearchParams(query.match(/\??(.*)/)[1]))
+    const result = query.match(/\?(.*)/)
+
+    if (!result || !result[1]) return {}
+    return Object.fromEntries(new URLSearchParams(result[1]))
 }
 
 async function createViteHandle ({ root = process.cwd(), dev = true, index, dist }) {
@@ -72,6 +75,7 @@ async function handleRender (req, res, { template, dev, vite, dist }) {
         if (redirect) {
             res.statusCode = 302
             res.setHeader('Location', redirect)
+            res.end(`Location: ${redirect}`)
             return
         }
 

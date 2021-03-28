@@ -30,8 +30,10 @@ async function loadData (url, context) {
 export async function render(url, context) {
     const data = await loadData(url, context)
 
-    if (data.props && data.props.redirect) {
-        return { redirect: data.props.redirect }
+    for (const k in data) {
+        if (data[k].data && data[k].data.redirect) {
+            return { redirect: data[k].data.redirect }
+        }
     }
 
     const html = ReactDOMServer.renderToString(

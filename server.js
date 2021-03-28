@@ -12,7 +12,6 @@ createViteHandle({
     dev: !isProd
 }).then(handle => {
     const app = http.createServer((req, res) => {
-        req.url
         if (isProd) {
             require('compression')()(req, res, () => {
                 handle(req, res)
